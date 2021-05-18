@@ -1,0 +1,25 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateKonexaTables extends Migration
+{
+    public function up()
+    {
+        if (!Schema:: hasTable('konexa_csv_datas')) {
+            Schema::create('konexa_csv_datas', function (Blueprint $table) {
+                $table->increments('id');
+                $table->unsignedInteger('user_id');
+                $table->string('csv_filename');
+                $table->json('csv_data');
+                $table->timestamps();
+            });
+        }
+ }
+    public function down()
+    {
+        Schema::dropIfExists('konexa_csv_datas');
+    }
+}

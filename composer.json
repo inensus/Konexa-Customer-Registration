@@ -1,0 +1,31 @@
+{
+    "name": "inensus/konexa-bulk-registration",
+    "description": "Package description",
+    "type": "package",
+    "require": {
+        "php": "^7.3",
+        "parsecsv/php-parsecsv": "^1.3",
+        "spatie/geocoder": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kamuran Engin",
+            "email": "ke@inensus.com",
+            "role": "developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Inensus\\KonexaBulkRegistration\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Inensus\\KonexaBulkRegistration\\Providers\\ServiceProvider"
+            ]
+        }
+    }
+}
