@@ -16,8 +16,6 @@ class KonexaBulkRegistrationServiceProvider extends ServiceProvider
 {
     public function boot(Filesystem $filesystem)
     {
-
-        require __DIR__ . '/../../vendor/autoload.php';
         $this->app->register(RouteServiceProvider::class);
         if ($this->app->runningInConsole()) {
             $this->publishConfigFiles();
