@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Inensus\\KonexaBulkRegistration\\Providers\\ServiceProvider"
+                "Inensus\\KonexaBulkRegistration\\Providers\\KonexaBulkRegistrationServiceProvider"
             ]
         }
     }
