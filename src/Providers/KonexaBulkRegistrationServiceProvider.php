@@ -40,7 +40,7 @@ class KonexaBulkRegistrationServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../../config/konexa-bulk-registration.php' => config_path('konexa-bulk-registration.php'),
-        ]);
+        ],'configurations');
     }
 
     public function publishVueFiles()

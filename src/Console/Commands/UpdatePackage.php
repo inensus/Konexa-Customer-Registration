@@ -35,6 +35,7 @@ class UpdatePackage extends Command
         $this->removeOldVersionOfPackage();
         $this->installNewVersionOfPackage();
         $this->deleteMigration($this->fileSystem);
+        $this->publishConfigurations();
         $this->publishMigrationsAgain();
         $this->updateDatabase();
         $this->publishVueFilesAgain();
@@ -44,6 +45,14 @@ class UpdatePackage extends Command
         $this->info('Package updated successfully..');
     }
 
+    private function publishConfigurations()
+    {
+        $this->info('Copying configurations\n');
+        $this->call('vendor:publish', [
+            '--provider' => "Inensus\KonexaBulkRegistration\Providers\KonexaBulkRegistrationServiceProvider",
+            '--tag' => "configurations",
+        ]);
+    }
     private function removeOldVersionOfPackage()
     {
         $this->info('Removing former version of package\n');

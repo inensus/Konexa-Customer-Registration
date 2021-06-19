@@ -11,7 +11,7 @@ class CsvFileParser
 
     public function __construct()
     {
-        require_once(__DIR__ . '/../../vendor/autoload.php');
+        require_once(__DIR__ . '/../../../../../vendor/autoload.php');
         $this->csv = new Csv();
     }
     public function parseCsvFromFilePath($path)

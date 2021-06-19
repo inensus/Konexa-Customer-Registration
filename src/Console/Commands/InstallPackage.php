@@ -23,6 +23,7 @@ class InstallPackage extends Command
     public function handle(): void
     {
         $this->info('Installing KonexaBulkRegistration Integration Package\n');
+        $this->publishConfigurations();
         $this->publishMigrations();
         $this->createDatabaseTables();
         $this->publishVueFiles();
@@ -34,6 +35,14 @@ class InstallPackage extends Command
         $this->info('Package installed successfully..');
     }
 
+    private function publishConfigurations()
+    {
+        $this->info('Copying configurations\n');
+        $this->call('vendor:publish', [
+            '--provider' => "Inensus\KonexaBulkRegistration\Providers\KonexaBulkRegistrationServiceProvider",
+            '--tag' => "configurations",
+        ]);
+    }
     private function publishMigrations()
     {
         $this->info('Copying migrations\n');
