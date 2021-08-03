@@ -73,6 +73,8 @@ class CsvDataProcessor
                     $row['meter_id'] = $meter->id;
                     $this->checkRecordWasRecentlyCreated($meter,'meter');
                     $meterParameter = $this->createRecordFromCsv($row, $this->reflections['MeterParameterService']);
+                    //initializes a new Access Rate Payment for the next Period
+                    event('accessRatePayment.initialize', $meterParameter);
                     $geographicalInformationService = app()->make($this->reflections['GeographicalInformationService']);
                     $geographicalInformationService->resolveCsvDataFromComingRow($row, $meterParameter);
                 }
