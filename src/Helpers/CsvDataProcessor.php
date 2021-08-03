@@ -2,7 +2,7 @@
 
 
 namespace Inensus\KonexaBulkRegistration\Helpers;
-
+use App\Models\Address\Address;
 
 class CsvDataProcessor
 {
@@ -77,6 +77,15 @@ class CsvDataProcessor
                     event('accessRatePayment.initialize', $meterParameter);
                     $geographicalInformationService = app()->make($this->reflections['GeographicalInformationService']);
                     $geographicalInformationService->resolveCsvDataFromComingRow($row, $meterParameter);
+
+                    $address = new Address();
+                    $address = $address->newQuery()->create([
+                        'city_id' => $city->id,
+                    ]);
+                    $address->owner()->associate($meterParameter);
+
+                    $address->geo()->associate($meterParameter->geo);
+                    $address->save();
                 }
             }
         });
